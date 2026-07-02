@@ -1,8 +1,5 @@
 import { test, expect } from '../pages/fixture.js';
 
-
-
-
 test.describe(' API Tests', () => {
 
     test('should authenticate user successfully', async ({ api }) => {
