@@ -12,13 +12,9 @@ export default class CheckoutPage {
 
     async enterCheckoutInformation(firstName, lastName, zip) {
         await this.openCheckout();
-
-
         await this.page.getByRole('textbox', { name: 'First Name' }).fill(firstName);
         await this.page.getByRole('textbox', { name: 'Last Name' }).fill(lastName);
         await this.page.getByRole('textbox', { name: 'Zip/Postal Code' }).fill(zip);
-
-
         await this.page.locator('#continue').click();
     }
 
@@ -29,8 +25,6 @@ export default class CheckoutPage {
             'Vernekar',
             '560066'
         );
-
-
         await this.page.getByRole('button', { name: 'Finish' }).click();
     }
 }
