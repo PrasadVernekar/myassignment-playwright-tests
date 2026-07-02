@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Playwright Automation Framework
 
 ## Overview
@@ -414,3 +415,6 @@ QA Automation Engineer
 =======
 # my-qa-assignment
 >>>>>>> 5b34428a343abc87bae94c56a2cd9b9d59a5b6fd
+=======
+# myassignment-playwright-tests
+>>>>>>> c0030a2a732b165c3a85fab23318d9140806c473
