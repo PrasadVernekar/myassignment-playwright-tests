@@ -16,8 +16,19 @@ export const test = base.extend({
 
  checkoutPage: async ({ page }, use) => {
   await use(new CheckoutPage (page));
-}
+},
 
+api: async ({}, use) => {
+  const api = await request.newContext({
+    baseURL: 'https://fakestoreapi.com/',
+    extraHTTPHeaders: {
+      'x-api-key': 'free_user_3FiCAEoLcd0m6LycyT3n9sdwvud'
+    }
+  });
+
+  await use(api);
+  await api.dispose();
+}
 
 });
 
