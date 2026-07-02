@@ -55,9 +55,6 @@ These capabilities make Playwright an excellent choice for scalable and maintain
 ```text
 my-qa-assignment
 │
-├── .github/
-│   └── workflows/
-│       └── playwright.yml
 │
 ├── pages/
 │   ├── LoginPage.js
@@ -165,7 +162,7 @@ Uses Playwright Request Context.
 
 Current scenarios:
 
-* GET Cart(s)
+* GET Cart
 * POST Create Cart
 * PUT Update Cart
 * DELETE Cart
@@ -341,39 +338,6 @@ Current:
 
 * Playwright HTML Report
 
-Future enhancements:
-
-* Allure Reports
-* Extent Reports
-* JUnit XML Reports
-* Email execution reports
-* Automatic report publishing from GitHub Actions
-
----
-
-## CI/CD Improvements
-
-Future enhancements include:
-
-* Scheduled nightly execution
-* Cross-browser execution in GitHub Actions
-* Automatic artifact upload
-* Slack/MS Teams notifications
-* Failure screenshots and trace uploads
-
----
-
-## Future Enhancements
-
-The framework can be extended with:
-
-* Environment configuration (QA/UAT/Production)
-* Test data management using JSON/CSV/Excel
-* API utility classes
-* Database validation
-* Docker support
-* Visual regression testing
-* Integration with TestRail, Jira, or Azure DevOps
 
 ---
 
