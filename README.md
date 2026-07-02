@@ -1,42 +1,63 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Playwright Automation Framework
 
-## Overview
+##Overview
 
-This project is an end-to-end automation framework built using **Playwright** and **JavaScript**. It follows the **Page Object Model (POM)** design pattern to improve test maintainability, readability, and reusability.
+This project is an end-to-end automation framework built using **Playwright** and **JavaScript (ES6)**. It follows the **Page Object Model (POM)** design pattern to create a scalable, maintainable, and reusable test automation solution.
 
-The framework supports:
+The framework supports both **UI Automation** and **API Automation**, using Playwright's built-in capabilities and reusable fixtures.
 
-- UI Automation
-- API Automation using Playwright Request Context
-- Reusable Fixtures
-- HTML Reporting
-- GitHub Actions CI Integration
+### Key Features
+
+* UI Automation
+* API Automation using Playwright Request Context
+* Page Object Model (POM)
+* Reusable Fixtures
+* HTML Reporting
+* Parallel Execution
+* GitHub Actions CI Integration
+
+---
+
+# Framework Choice
+
+## Why Playwright?
+
+Playwright was selected because it provides a modern automation solution for both UI and API testing within a single framework.
+
+### Advantages
+
+* Supports **Chromium, Firefox, and WebKit**
+* Built-in **API testing** without additional libraries
+* **Auto-waiting** reduces flaky tests
+* Fast **parallel execution**
+* Rich debugging with **Trace Viewer**, screenshots, and videos
+* Built-in **HTML reporting**
+* Easy integration with **CI/CD pipelines**
+* Excellent support for **Page Object Model (POM)**
+
+These capabilities make Playwright an excellent choice for scalable and maintainable automation frameworks.
 
 ---
 
 # Tech Stack
 
-- Playwright
-- JavaScript (ES6)
-- Node.js
-- Page Object Model (POM)
-- Playwright Fixtures
-- GitHub Actions
+* Playwright
+* JavaScript (ES6)
+* Node.js
+* Page Object Model (POM)
+* Playwright Fixtures
+* GitHub Actions
 
 ---
 
 # Project Structure
 
-```
+```text
 my-qa-assignment
 │
 ├── .github/
 │   └── workflows/
 │       └── playwright.yml
-│
-├── node_modules/
 │
 ├── pages/
 │   ├── LoginPage.js
@@ -51,13 +72,11 @@ my-qa-assignment
 │   └── api.spec.js
 │
 ├── playwright-report/
-│
 ├── test-results/
 │
-├── .gitignore
+├── playwright.config.js
 ├── package.json
 ├── package-lock.json
-├── playwright.config.js
 └── README.md
 ```
 
@@ -65,146 +84,100 @@ my-qa-assignment
 
 # Folder Description
 
-## `pages`
+## pages/
 
 Contains all Page Object Model (POM) classes and reusable fixtures.
 
 ### LoginPage.js
 
-Handles all login-related actions such as:
+Handles:
 
-- Navigating to the application
-- Valid user login
-- Invalid user login
-
----
+* Navigate to application
+* Valid user login
+* Invalid user login
 
 ### ProductPage.js
 
-Contains reusable methods related to product functionality.
+Handles:
 
-Examples:
-
-- Sort products
-- Add products to cart
-
----
+* Product sorting
+* Add products to cart
+* Remove products from cart
 
 ### CheckoutPage.js
 
-Contains methods for:
+Handles:
 
-- Checkout
-- Enter customer information
-- Complete order
-
----
+* Checkout process
+* Customer information
+* Complete order
 
 ### fixture.js
 
-Defines reusable Playwright fixtures.
+Provides reusable Playwright fixtures:
 
-Current fixtures include:
+* LoginPage
+* ProductPage
+* CheckoutPage
+* API Request Context
 
-- LoginPage
-- ProductPage
-- CheckoutPage
-- API Request Context
-
-This avoids creating page object instances inside every test.
+This avoids creating page objects inside every test.
 
 ---
 
-## `tests`
+## tests/
 
-Contains all automated test cases.
+Contains automated UI and API test cases.
 
 ### login.spec.js
 
-Verifies:
+Covers:
 
-- Successful login
-- Locked user validation
-
----
+* Successful login
+* Locked user validation
+* Invalid username
+* Invalid password
+* Empty username
+* Empty password
 
 ### cart.spec.js
 
-Verifies:
+Covers:
 
-- Product sorting
-- Lowest-priced product appears first
-- Add products to cart
-- Cart badge count
-
----
+* Product sorting
+* Add products to cart
+* Cart badge validation
+* Cart navigation
+* Remove products
 
 ### checkout.spec.js
 
-Verifies:
+Covers:
 
-- Checkout flow
-- Customer information
-- Successful order completion
-
----
+* Successful checkout
+* Checkout information
+* Checkout overview
+* Required field validations
 
 ### api.spec.js
 
-Uses Playwright's Request Context for API testing without launching a browser.
+Uses Playwright Request Context.
 
-API scenarios include:
+Current scenarios:
 
-- GET User List
-- POST Create User
-
----
-
-## `playwright-report`
-
-Automatically generated HTML execution report.
-
-Open using:
-
-```bash
-npx playwright show-report
-```
-
----
-
-## `test-results`
-
-Stores execution artifacts such as:
-
-- Trace files
-- Screenshots
-- Videos
-
-These are useful for debugging failed test cases.
-
----
-
-## `playwright.config.js`
-
-Global Playwright configuration.
-
-Includes:
-
-- Browser configuration
-- Base URL
-- Reporter
-- Retries
-- Timeouts
-- Trace settings
+* GET Cart(s)
+* POST Create Cart
+* PUT Update Cart
+* DELETE Cart
 
 ---
 
 # Prerequisites
 
-Before running the project, ensure the following are installed:
+Before running the project, install:
 
-- Node.js (v18 or later recommended)
-- npm
+* Node.js (v18 or later)
+* npm
 
 Verify installation:
 
@@ -217,25 +190,25 @@ npm -v
 
 # Installation
 
-Clone the repository:
+Clone the repository
 
 ```bash
 git clone <repository-url>
 ```
 
-Navigate to the project:
+Navigate to the project
 
 ```bash
 cd my-qa-assignment
 ```
 
-Install project dependencies:
+Install dependencies
 
 ```bash
 npm install
 ```
 
-Install Playwright browsers:
+Install Playwright browsers
 
 ```bash
 npx playwright install
@@ -245,176 +218,167 @@ npx playwright install
 
 # Running Tests
 
-## Execute all tests
+Run all tests
 
 ```bash
 npx playwright test
 ```
 
----
-
-## Execute Login tests
+Run Login tests
 
 ```bash
 npx playwright test tests/login.spec.js
 ```
 
----
-
-## Execute Cart tests
+Run Cart tests
 
 ```bash
 npx playwright test tests/cart.spec.js
 ```
 
----
-
-## Execute Checkout tests
+Run Checkout tests
 
 ```bash
 npx playwright test tests/checkout.spec.js
 ```
 
----
-
-## Execute API tests
+Run API tests
 
 ```bash
 npx playwright test tests/api.spec.js
 ```
 
----
-
-## Execute tests in headed mode
+Run in headed mode
 
 ```bash
 npx playwright test --headed
 ```
 
----
-
-## Execute tests in debug mode
+Run in debug mode
 
 ```bash
 npx playwright test --debug
 ```
 
----
-
-## Execute a specific test
+Run a specific test
 
 ```bash
-npx playwright test -g "add to cart badge"
+npx playwright test -g "test name"
 ```
 
 ---
 
 # Reporting
 
-After execution, view the HTML report:
+Generate and open the Playwright HTML Report:
 
 ```bash
 npx playwright show-report
 ```
 
-The report contains:
+The report includes:
 
-- Test Summary
-- Pass/Fail Status
-- Screenshots (Failures)
-- Trace Viewer
-- Execution Time
-
----
-
-# API Testing
-
-The framework includes API automation using Playwright's built-in Request Context.
-
-### GET
-
-```
-GET /api/users?page=2
-```
-
-Validates:
-
-- Status Code
-- Response Schema
-- User Details
-
----
-
-### POST
-
-```
-POST /api/users
-```
-
-Payload:
-
-```json
-{
-  "name": "morpheus",
-  "job": "leader"
-}
-```
-
-Validates:
-
-- Status Code
-- Name
-- Job
-- Generated ID
-- Created Timestamp
+* Test Summary
+* Pass/Fail Status
+* Execution Time
+* Screenshots (Failures)
+* Videos
+* Trace Viewer
 
 ---
 
 # Framework Features
 
-- Page Object Model (POM)
-- Reusable Fixtures
-- API Automation
-- UI Automation
-- HTML Reports
-- Retry Mechanism
-- Parallel Execution
-- Auto Waiting
-- Role-based Locators
+* Page Object Model (POM)
+* Reusable Fixtures
+* UI Automation
+* API Automation
+* HTML Reporting
+* Auto Waiting
+* Retry Mechanism
+* Parallel Execution
+* Role-based Locators
 
 ---
 
 # Best Practices Followed
 
-- Page Object Model for maintainability
-- Centralized reusable fixtures
-- Global Playwright configuration
-- Independent test cases
-- Playwright auto-waiting
-- Explicit assertions
-- Separation of UI and API tests
-- Readable and reusable code
+* Page Object Model (POM)
+* Centralized reusable fixtures
+* Independent test cases
+* Global Playwright configuration
+* Explicit assertions
+* Separation of UI and API tests
+* Playwright auto-waiting
+* Readable and reusable code
 
 ---
 
-The workflow performs:
+# Extension Plan
 
-- Checkout source code
-- Install Node.js
-- Install project dependencies
-- Install Playwright browsers
-- Execute Playwright tests
-- Publish HTML report (if configured)
+The framework is designed to scale as the application grows.
+
+## Parallelisation
+
+Future improvements include:
+
+* Cross-browser execution
+* Smoke, Regression, and Sanity test suites
+* Multiple worker execution
+* Browser matrix execution in CI
+
+Example:
+
+```bash
+npx playwright test --workers=4
+```
+
+---
+
+## Reporting
+
+Current:
+
+* Playwright HTML Report
+
+Future enhancements:
+
+* Allure Reports
+* Extent Reports
+* JUnit XML Reports
+* Email execution reports
+* Automatic report publishing from GitHub Actions
+
+---
+
+## CI/CD Improvements
+
+Future enhancements include:
+
+* Scheduled nightly execution
+* Cross-browser execution in GitHub Actions
+* Automatic artifact upload
+* Slack/MS Teams notifications
+* Failure screenshots and trace uploads
+
+---
+
+## Future Enhancements
+
+The framework can be extended with:
+
+* Environment configuration (QA/UAT/Production)
+* Test data management using JSON/CSV/Excel
+* API utility classes
+* Database validation
+* Docker support
+* Visual regression testing
+* Integration with TestRail, Jira, or Azure DevOps
 
 ---
 
 # Author
 
 **Prasad Vernekar**
+
 QA Automation Engineer
-=======
-# my-qa-assignment
->>>>>>> 5b34428a343abc87bae94c56a2cd9b9d59a5b6fd
-=======
-# myassignment-playwright-tests
->>>>>>> c0030a2a732b165c3a85fab23318d9140806c473
